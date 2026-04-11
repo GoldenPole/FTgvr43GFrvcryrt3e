@@ -901,10 +901,28 @@ nav.nav-transparent .nav-links a.active {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  min-height: 100vh;
   background: var(--border);
   border-bottom: 1px solid var(--border);
   min-height: 50vw;
+}
+
+.skeleton-card {
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.skeleton-card::after {
+  content: '';
+  display: block;
+  aspect-ratio: 4/3;
+  background: linear-gradient(90deg, var(--surface2) 25%, var(--surface3) 50%, var(--surface2) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .product-card {
@@ -1542,6 +1560,8 @@ nav.nav-transparent .nav-links a.active {
 footer {
   border-top: 1px solid var(--border);
   padding: 1.75rem 4rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1706,7 +1726,17 @@ footer {
   .pd-info { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; }
   .pd-thumb { width: 72px; }
 }
+
+.fonts-loading .gallery-hero-eyebrow,
+.fonts-loading .gallery-hero-title {
+  color: transparent;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.08) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
   </style>
+  <script>document.documentElement.classList.add('fonts-loading');</script>
 </head>
 <body>
 
@@ -1762,7 +1792,14 @@ footer {
     <button class="filter-btn" data-filter="tufli">Туфлі</button>
   </div>
 
-  <div class="product-grid" id="productGrid"></div>
+  <div class="product-grid" id="productGrid">
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+    <div class="skeleton-card"></div>
+  </div>
   </main>
 
   <footer>
@@ -1883,5 +1920,15 @@ footer {
     }, { threshold: 0.08 });
     document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
   </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+    document.fonts.ready.then(() => {
+      document.documentElement.classList.remove('fonts-loading');
+    });
+  </script>
+
 </body>
 </html>

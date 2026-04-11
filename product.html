@@ -1870,5 +1870,12 @@ footer {
       if (e.key === 'ArrowLeft') prevImage();
     });
   </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+
 </body>
 </html>
