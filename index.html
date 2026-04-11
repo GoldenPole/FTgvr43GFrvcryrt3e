@@ -1821,27 +1821,28 @@ footer {
 
   <script src="products.js?v=15" defer></script>
   <script>
-    const featuredIds = [1, 2, 3];
-
-    const previewGrid = document.getElementById('previewGrid');
-    previewGrid.innerHTML = featuredIds.map(id => products.find(p => p.id === id)).filter(Boolean).map(p => {
-      const img = (p.images || []).find(url => url && url.trim() !== '');
-      const imgHtml = img
-        ? `<img src="${img}" alt="${p.name}" loading="lazy" width="800" height="600" onerror="this.style.display='none'" />`
-        : '';
-      return `
-        <a href="product.html?id=${p.id}" class="preview-card">
-          <div class="preview-card-img">
-            <div class="preview-card-img-inner">${imgHtml}</div>
-            <div class="preview-card-overlay"><span class="preview-card-overlay-text">Детальніше</span></div>
-          </div>
-          <div class="preview-card-body">
-            <div class="preview-card-name">${p.name}</div>
-            <div class="preview-card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
-          </div>
-        </a>
-      `;
-    }).join('');
+    document.addEventListener('DOMContentLoaded', () => {
+      const featuredIds = [1, 2, 3];
+      const previewGrid = document.getElementById('previewGrid');
+      previewGrid.innerHTML = featuredIds.map(id => products.find(p => p.id === id)).filter(Boolean).map(p => {
+        const img = (p.images || []).find(url => url && url.trim() !== '');
+        const imgHtml = img
+          ? `<img src="${img}" alt="${p.name}" loading="lazy" width="800" height="600" onerror="this.style.display='none'" />`
+          : '';
+        return `
+          <a href="product.html?id=${p.id}" class="preview-card">
+            <div class="preview-card-img">
+              <div class="preview-card-img-inner">${imgHtml}</div>
+              <div class="preview-card-overlay"><span class="preview-card-overlay-text">Детальніше</span></div>
+            </div>
+            <div class="preview-card-body">
+              <div class="preview-card-name">${p.name}</div>
+              <div class="preview-card-price">${p.price.toLocaleString('uk-UA')} ₴</div>
+            </div>
+          </a>
+        `;
+      }).join('');
+    });
 
     const nav = document.getElementById('main-nav');
     const NAV_FADE_START = 40;
