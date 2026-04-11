@@ -262,6 +262,7 @@ nav.nav-transparent .nav-links a.active {
   left: 0;
   right: 0;
   bottom: -10%;
+  will-change: transform;
   z-index: 0;
   will-change: transform;
 }
@@ -1847,10 +1848,15 @@ footer {
     const nav = document.getElementById('main-nav');
     const NAV_FADE_START = 40;
     const NAV_FADE_END   = 200;
+    const heroBg = document.querySelector('.hero-bg');
 
-    let _navRaf = false;
-    function _updateNav() {
-      const y = window.scrollY;
+    // READ: кешовані значення, оновлюються у scroll handler
+    let _scrollY = window.scrollY;
+    let _rafPending = false;
+    let _parTarget = 0, _parCurrent = 0, _parRunning = false;
+
+    // WRITE: лише запис у DOM, без жодних читань геометрії
+    function _updateNav(y) {
       if (y < NAV_FADE_START) {
         nav.classList.add('nav-transparent');
         nav.style.background = '';
@@ -1864,18 +1870,26 @@ footer {
         nav.style.borderBottomColor = `rgba(0,0,0,${(p * 0.08).toFixed(3)})`;
       }
     }
-    window.addEventListener('scroll', () => {
-      if (!_navRaf) { _navRaf = true; requestAnimationFrame(() => { _updateNav(); _navRaf = false; }); }
-    }, { passive: true });
-    _updateNav();
 
-    const heroBg = document.querySelector('.hero-bg');
-    const heroSection = document.querySelector('.hero-full');
-    let _parTarget = 0, _parCurrent = 0, _parRunning = false;
+    // Один scroll listener — один rAF — спочатку reads, потім writes
+    window.addEventListener('scroll', () => {
+      _scrollY = window.scrollY; // READ (до rAF, не викликає reflow)
+      if (!_rafPending) {
+        _rafPending = true;
+        requestAnimationFrame(() => {
+          // WRITE nav
+          _updateNav(_scrollY);
+          // WRITE parallax target
+          _parTarget = _scrollY * 0.22;
+          if (!_parRunning) { _parRunning = true; requestAnimationFrame(_parLoop); }
+          _rafPending = false;
+        });
+      }
+    }, { passive: true });
 
     function _parLoop() {
       _parCurrent += (_parTarget - _parCurrent) * 0.07;
-      heroBg.style.transform = `translateY(${_parCurrent.toFixed(2)}px)`;
+      heroBg.style.transform = `translateY(${_parCurrent.toFixed(2)}px)`; // WRITE
       if (Math.abs(_parTarget - _parCurrent) > 0.05) {
         requestAnimationFrame(_parLoop);
       } else {
@@ -1883,10 +1897,7 @@ footer {
       }
     }
 
-    window.addEventListener('scroll', () => {
-      _parTarget = window.scrollY * 0.22;
-      if (!_parRunning) { _parRunning = true; requestAnimationFrame(_parLoop); }
-    }, { passive: true });
+    _updateNav(_scrollY);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {

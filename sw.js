@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lideri-v2';
+const CACHE_NAME = 'lideri-v3';
 
 const STATIC_ASSETS = [
   '/',
