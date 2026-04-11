@@ -1728,9 +1728,11 @@ footer {
   <script>
     const nav = document.getElementById('main-nav');
     const NAV_FADE_START = 30, NAV_FADE_END = 140;
-    let _navRaf = false;
-    function _updateNav() {
-      const y = window.scrollY;
+
+    let _scrollY = window.scrollY;
+    let _rafPending = false;
+
+    function _updateNav(y) {
       if (y < NAV_FADE_START) {
         nav.classList.add('nav-transparent');
         nav.style.background = '';
@@ -1745,9 +1747,13 @@ footer {
       }
     }
     window.addEventListener('scroll', () => {
-      if (!_navRaf) { _navRaf = true; requestAnimationFrame(() => { _updateNav(); _navRaf = false; }); }
+      _scrollY = window.scrollY;
+      if (!_rafPending) {
+        _rafPending = true;
+        requestAnimationFrame(() => { _updateNav(_scrollY); _rafPending = false; });
+      }
     }, { passive: true });
-    _updateNav();
+    _updateNav(_scrollY);
 
     const params = new URLSearchParams(window.location.search);
     const id = parseInt(params.get('id'));

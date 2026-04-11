@@ -1821,9 +1821,13 @@ footer {
   <script>
     const nav = document.getElementById('main-nav');
     const NAV_FADE_START = 30, NAV_FADE_END = 160;
-    let _navRaf = false;
-    function _updateNav() {
-      const y = window.scrollY;
+    const galleryHeroBg = document.querySelector('.gallery-hero-bg');
+
+    let _scrollY = window.scrollY;
+    let _rafPending = false;
+    let _gParTarget = 0, _gParCurrent = 0, _gParRunning = false;
+
+    function _updateNav(y) {
       if (y < NAV_FADE_START) {
         nav.classList.add('nav-transparent');
         nav.style.background = '';
@@ -1837,13 +1841,6 @@ footer {
         nav.style.borderBottomColor = `rgba(0,0,0,${(p * 0.08).toFixed(3)})`;
       }
     }
-    window.addEventListener('scroll', () => {
-      if (!_navRaf) { _navRaf = true; requestAnimationFrame(() => { _updateNav(); _navRaf = false; }); }
-    }, { passive: true });
-    _updateNav();
-
-    const galleryHeroBg = document.querySelector('.gallery-hero-bg');
-    let _gParTarget = 0, _gParCurrent = 0, _gParRunning = false;
 
     function _gParLoop() {
       _gParCurrent += (_gParTarget - _gParCurrent) * 0.07;
@@ -1856,9 +1853,19 @@ footer {
     }
 
     window.addEventListener('scroll', () => {
-      _gParTarget = window.scrollY * 0.22;
-      if (!_gParRunning) { _gParRunning = true; requestAnimationFrame(_gParLoop); }
+      _scrollY = window.scrollY;
+      if (!_rafPending) {
+        _rafPending = true;
+        requestAnimationFrame(() => {
+          _updateNav(_scrollY);
+          _gParTarget = _scrollY * 0.22;
+          if (!_gParRunning) { _gParRunning = true; requestAnimationFrame(_gParLoop); }
+          _rafPending = false;
+        });
+      }
     }, { passive: true });
+
+    _updateNav(_scrollY);
 
     // Туфлі об'єднує також Мері Джейн і Слінгбеки
     const FILTER_GROUPS = {
