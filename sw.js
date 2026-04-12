@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lideri-v4';
+const CACHE_NAME = 'lideri-v5';
 
 const STATIC_ASSETS = [
   '/',
@@ -6,7 +6,10 @@ const STATIC_ASSETS = [
   '/gallery.html',
   '/product.html',
   '/products.js',
-  '/liderilogo3444.svg',
+  '/assets/liderilogo3444.svg',
+  '/assets/sub1.webp',
+  '/assets/sub2.webp',
+  '/assets/sub3.webp',
   '/fonts/Inter-VariableFont.woff2',
   '/fonts/Inter-Italic-VariableFont.woff2',
   '/fonts/CormorantGaramond-VariableFont.woff2',
