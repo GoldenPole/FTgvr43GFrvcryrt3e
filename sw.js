@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lideri-v8';
+const CACHE_NAME = 'lideri-v9';
 const IMAGE_CACHE = 'lideri-images-v1';
 const IMAGE_MAX  = 80; // максимальна кількість фото в кеші
 
