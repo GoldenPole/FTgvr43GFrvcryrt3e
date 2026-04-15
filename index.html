@@ -1701,6 +1701,154 @@ footer {
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.4s ease-in-out infinite;
 }
+
+/* === Haivka Invite Block === */
+.haivka-invite {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.haivka-invite-text {
+  padding: 2.8rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--surface);
+}
+
+.haivka-invite-eyebrow {
+  font-size: 0.64rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.haivka-invite-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.haivka-invite-title {
+  font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.5px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.haivka-invite-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.haivka-invite-desc {
+  font-size: 0.88rem;
+  color: var(--text-sub);
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 320px;
+}
+
+.haivka-invite-img {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface2);
+  min-height: 340px;
+}
+
+.haivka-invite-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.haivka-invite:hover .haivka-invite-img img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 768px) {
+  .haivka-invite {
+    grid-template-columns: 1fr;
+  }
+  .haivka-invite-img {
+    min-height: 240px;
+    order: -1;
+  }
+  .haivka-invite-text {
+    padding: 2rem 1.5rem;
+    gap: 0.9rem;
+  }
+}
+
+/* BURGER & MOBILE NAV */
+.burger {
+  display: none; flex-direction: column; justify-content: center;
+  align-items: center; gap: 5px; width: 36px; height: 36px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: var(--text); flex-shrink: 0;
+}
+.burger span {
+  display: block; width: 22px; height: 1.5px;
+  background: currentColor; border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
+.mobile-nav-overlay {
+  position: fixed; inset: 0;
+  background: rgba(28,26,24,0.52);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  z-index: 150; opacity: 0; visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+.mobile-nav-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: min(300px, 85vw); background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-nav-overlay.open .mobile-nav-panel { transform: translateX(0); }
+.mobile-nav-close {
+  position: absolute; top: 1.6rem; right: 1.8rem;
+  background: none; border: none;
+  font-size: 1.1rem; cursor: pointer; color: var(--text-muted);
+  padding: 0.4rem; transition: color 0.2s; line-height: 1;
+}
+.mobile-nav-close:hover { color: var(--text); }
+.mobile-nav-links { display: flex; flex-direction: column; margin-bottom: 5rem; }
+.mobile-nav-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 600; font-style: italic;
+  color: var(--text); padding: 2rem 0;
+  letter-spacing: -0.5px; transition: color 0.2s; line-height: 1.1;
+}
+.mobile-nav-links a:hover, .mobile-nav-links a.active { color: var(--accent); }
+.mobile-nav-brand {
+  position: absolute; bottom: 2rem; left: 2rem;
+  font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .burger { display: flex; }
+}
   </style>
   <script>document.documentElement.classList.add('fonts-loading');</script>
 </head>
@@ -1713,8 +1861,23 @@ footer {
     <ul class="nav-links">
       <li><a href="index.html" class="active">Головна</a></li>
       <li><a href="gallery.html">Колекція</a></li>
+      <li><a href="haivka.html">Haivka</a></li>
     </ul>
+    <button class="burger" id="burgerBtn" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <div class="mobile-nav-panel">
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Закрити">&#x2715;</button>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="active">Головна</a>
+        <a href="gallery.html">Колекція</a>
+        <a href="haivka.html">Haivka</a>
+      </div>
+      <div class="mobile-nav-brand">Lideri · 2026</div>
+    </div>
+  </div>
 
   <main>
   <section class="hero-full">
@@ -1781,8 +1944,7 @@ footer {
       <div class="editorial-eyebrow">Сезон 2026</div>
       <h2 class="editorial-title">Деталі,<br>що мають<br><em>значення</em></h2>
       <p class="editorial-desc">
-        Кожна пара - результат вибору матеріалів, форми і балансу.
-        Не тренд. Не гасло. Просто взуття, яке дарує задоволення.
+        Кожна пара - результат вибору матеріалів, форми і балансу. Просто взуття, яке дарує задоволення.
       </p>
       <a href="gallery.html" class="btn btn-outline">Дивитись колекцію</a>
     </div>
@@ -1801,6 +1963,25 @@ footer {
       <div class="skeleton-card"></div>
       <div class="skeleton-card"></div>
       <div class="skeleton-card"></div>
+    </div>
+  </section>
+
+  <section class="haivka-invite" data-reveal>
+    <div class="haivka-invite-text">
+      <div class="haivka-invite-eyebrow">Христя Гель</div>
+      <h2 class="haivka-invite-title">Haivka<br><em>— ручна<br>робота</em></h2>
+      <p class="haivka-invite-desc">
+        Вишивка, макраме, ілюстрації — кожна річ зроблена вручну з вибором матеріалу, кольору та форми.
+      </p>
+      <a href="haivka.html" class="btn btn-outline">Переглянути колекцію</a>
+    </div>
+    <div class="haivka-invite-img">
+      <img
+        src="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/haivka/IMG_9953.jpg"
+        alt="Haivka — ручні роботи з душею"
+        loading="lazy"
+        onerror="this.style.display='none'"
+      />
     </div>
   </section>
   </main>
@@ -1917,6 +2098,14 @@ footer {
     document.fonts.ready.then(() => {
       document.documentElement.classList.remove('fonts-loading');
     });
+  </script>
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    burgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    document.getElementById('mobileNavClose').addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.addEventListener('click', e => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') mobileNav.classList.remove('open'); });
   </script>
 
 </body>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Haivka — деталі роботи." />
+  <title>Haivka — Робота</title>
+  <link rel="icon" type="image/svg+xml" href="assets/liderilogo3444.svg">
+  <link rel="preconnect" href="https://qtcvngzcbjpnosriaxga.supabase.co" crossorigin>
+  <link rel="dns-prefetch" href="https://qtcvngzcbjpnosriaxga.supabase.co">
+  <!-- LCP: nav logo -->
+  <link rel="preload" as="image" href="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/lider33ghghg%20(1)%20(1).webp">
+  <link rel="preload" href="/fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/CormorantGaramond-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/CormorantGaramond-Italic-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-VariableFont.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-Italic-VariableFont.woff2') format('woff2');
+  font-weight: 100 900; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont.woff2') format('woff2');
+  font-weight: 100 900; font-style: normal; font-display: swap; size-adjust: 95%;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Italic-VariableFont.woff2') format('woff2');
+  font-weight: 100 900; font-style: italic; font-display: swap; size-adjust: 95%;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f5f2;
+  --surface: #ffffff;
+  --surface2: #f2efe9;
+  --surface3: #e8e4dd;
+  --accent: #a07840;
+  --accent-dim: #87632e;
+  --accent-light: rgba(160, 120, 64, 0.09);
+  --text: #1c1a18;
+  --text-muted: #8c8882;
+  --text-sub: #6b6660;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(160, 120, 64, 0.28);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-h: 108px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; padding-top: var(--nav-h); }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+[data-reveal] { opacity: 0; transform: translateY(32px); transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1); }
+[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  background: rgba(247,245,242,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border); box-shadow: 0 4px 28px rgba(0,0,0,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; isolation: isolate; }
+.nav-logo-img {
+  height: 100px; width: auto; max-width: 320px; object-fit: contain;
+  filter: brightness(0) sepia(1) saturate(2) hue-rotate(8deg);
+}
+.nav-links {
+  display: flex; gap: 2.5rem; list-style: none;
+  padding: 0.45rem 1.5rem; border: 1px solid transparent;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.nav-links a {
+  font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); transition: color var(--transition); font-weight: 500;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+/* BTN */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2.2rem; font-size: 0.78rem; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 600; cursor: pointer;
+  transition: all var(--transition); border: none; font-family: 'Inter', sans-serif;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-dim); transform: translateY(-2px); }
+.badge-new { background: var(--accent); color: #fff; }
+.badge-sale { background: #c0392b; color: #fff; }
+
+/* BREADCRUMB */
+.product-breadcrumb {
+  padding: 1rem 2.5rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center;
+}
+.product-breadcrumb a {
+  font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); transition: color var(--transition);
+  display: inline-flex; align-items: center; gap: 0.7rem;
+}
+.bc-arrow { color: var(--accent); font-size: 1rem; display: inline-block; transition: transform var(--transition); line-height: 1; }
+.product-breadcrumb a:hover { color: var(--text); }
+.product-breadcrumb a:hover .bc-arrow { transform: translateX(-4px); }
+
+/* PRODUCT LAYOUT */
+.product-layout {
+  display: grid; grid-template-columns: 55% 45%;
+  min-height: calc(100vh - 130px); border-bottom: 1px solid var(--border);
+}
+.pd-gallery {
+  border-right: 1px solid var(--border); display: flex; flex-direction: column;
+  background: var(--surface); position: sticky; top: var(--nav-h);
+  height: calc(100vh - var(--nav-h)); overflow: hidden;
+}
+.pd-main-img {
+  flex: 1; position: relative;
+  background: linear-gradient(135deg, var(--surface2) 0%, var(--surface3) 100%);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.pd-main-img img { width: 100%; height: 100%; object-fit: contain; transition: opacity 0.18s ease; }
+.pd-emoji-fallback {
+  font-size: 10rem; display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; position: absolute; inset: 0;
+}
+.pd-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 38px; height: 38px; background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(0,0,0,0.12); border-radius: 50%;
+  color: rgba(28,26,24,0.6); font-size: 0.95rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--transition); z-index: 5;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.pd-arrow:hover { background: rgba(160,120,64,0.15); border-color: var(--accent); color: var(--accent); transform: translateY(-50%) scale(1.08); }
+.pd-arrow-prev { left: 1rem; }
+.pd-arrow-next { right: 1rem; }
+.pd-counter {
+  position: absolute; bottom: 1rem; right: 1rem;
+  font-size: 0.7rem; letter-spacing: 1.5px; color: var(--text-muted);
+  background: rgba(255,255,255,0.88); padding: 0.3rem 0.7rem; border: 1px solid var(--border);
+}
+.pd-thumbs {
+  display: flex; gap: 1px; background: var(--border);
+  border-top: 1px solid var(--border); flex-shrink: 0; overflow-x: auto; scrollbar-width: none;
+}
+.pd-thumbs::-webkit-scrollbar { display: none; }
+.pd-thumb {
+  flex-shrink: 0; width: 100px; aspect-ratio: 16/9; border: none;
+  background: var(--surface2); cursor: pointer; overflow: hidden;
+  opacity: 0.45; transition: opacity var(--transition); position: relative;
+}
+.pd-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pd-thumb:hover { opacity: 0.75; }
+.pd-thumb.active { opacity: 1; outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.pd-info {
+  padding: 3rem 3.5rem; display: flex; flex-direction: column;
+  gap: 1.6rem; overflow-y: auto;
+}
+.pd-meta { display: flex; align-items: center; gap: 1rem; }
+.pd-category {
+  font-size: 0.62rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); font-weight: 500; border: 1px solid var(--border-accent);
+  padding: 0.2rem 0.65rem;
+}
+.pd-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.25rem 0.7rem; }
+.pd-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3rem); font-weight: 600;
+  letter-spacing: -0.5px; font-style: italic; line-height: 1.1;
+}
+.pd-price-row { display: flex; align-items: center; gap: 1rem; padding-left: 1rem; border-left: 2px solid var(--accent); }
+.pd-price { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 600; color: var(--accent); line-height: 1; }
+.pd-price-old { font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through; }
+.pd-divider { height: 1px; background: var(--border); }
+.pd-sizes-label {
+  font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 0.9rem;
+}
+.pd-sizes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pd-size-btn {
+  display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--border);
+  background: transparent; color: var(--text-sub); font-size: 0.88rem;
+  font-weight: 500; font-family: 'Inter', sans-serif;
+}
+.pd-desc { color: var(--text-sub); font-size: 0.95rem; line-height: 1.85; font-weight: 300; }
+.pd-cta { width: 100%; justify-content: center; letter-spacing: 2.5px; margin-top: auto; padding-top: 1rem; padding-bottom: 1rem; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border); padding: 1.75rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; min-height: 96px;
+}
+.footer-logo-img { height: 56px; width: auto; object-fit: contain; filter: brightness(0) sepia(1) saturate(2) hue-rotate(8deg); }
+.footer-copy { font-size: 0.72rem; color: #333333; letter-spacing: 0.5px; }
+.footer-nav { display: flex; align-items: center; gap: 2rem; }
+.footer-nav a {
+  font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #333333; transition: color var(--transition);
+  display: inline-flex; align-items: center; gap: 0.45rem;
+}
+.footer-nav a:hover { color: var(--accent); }
+.footer-insta svg { flex-shrink: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  nav { padding: 0 2rem; }
+  .product-breadcrumb { padding: 1rem 1.5rem; }
+  .pd-info { padding: 2rem 2rem 3rem; }
+  footer { padding: 1.5rem 2rem; }
+}
+@media (max-width: 768px) {
+  .product-layout { grid-template-columns: 1fr; }
+  .pd-gallery { position: static; height: auto; }
+  .pd-main-img { aspect-ratio: 4/3; height: auto; }
+  .pd-info { padding: 2rem 1.5rem 3rem; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 1.25rem; }
+  .nav-links { gap: 1.5rem; padding: 0.4rem 1rem; }
+  .product-breadcrumb { padding: 1rem 1.25rem; }
+  .pd-info { padding: 1.5rem 1.25rem 3rem; gap: 1.25rem; }
+  .pd-thumb { width: 72px; }
+  footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.2rem; }
+  .footer-nav { gap: 1.25rem; flex-wrap: wrap; justify-content: center; }
+}
+
+/* BURGER & MOBILE NAV */
+.burger {
+  display: none; flex-direction: column; justify-content: center;
+  align-items: center; gap: 5px; width: 36px; height: 36px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: var(--text); flex-shrink: 0;
+}
+.burger span {
+  display: block; width: 22px; height: 1.5px;
+  background: currentColor; border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.mobile-nav-overlay {
+  position: fixed; inset: 0;
+  background: rgba(28,26,24,0.52);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  z-index: 150; opacity: 0; visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+.mobile-nav-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: min(300px, 85vw); background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-nav-overlay.open .mobile-nav-panel { transform: translateX(0); }
+.mobile-nav-close {
+  position: absolute; top: 1.6rem; right: 1.8rem;
+  background: none; border: none;
+  font-size: 1.1rem; cursor: pointer; color: var(--text-muted);
+  padding: 0.4rem; transition: color 0.2s; line-height: 1;
+}
+.mobile-nav-close:hover { color: var(--text); }
+.mobile-nav-links { display: flex; flex-direction: column; margin-bottom: 5rem; }
+.mobile-nav-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 600; font-style: italic;
+  color: var(--text); padding: 2rem 0;
+  letter-spacing: -0.5px; transition: color 0.2s; line-height: 1.1;
+}
+.mobile-nav-links a:hover, .mobile-nav-links a.active { color: var(--accent); }
+.mobile-nav-brand {
+  position: absolute; bottom: 2rem; left: 2rem;
+  font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .burger { display: flex; }
+}
+  </style>
+  <script>document.documentElement.classList.add('fonts-loading');</script>
+</head>
+<body>
+
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/lider33ghghg%20(1)%20(1).webp" alt="Lideri" class="nav-logo-img" width="320" height="100" onerror="this.style.visibility='hidden'" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="gallery.html">Колекція</a></li>
+      <li><a href="haivka.html" class="active">Haivka</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <div class="mobile-nav-panel">
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Закрити">&#x2715;</button>
+      <div class="mobile-nav-links">
+        <a href="index.html">Головна</a>
+        <a href="gallery.html">Колекція</a>
+        <a href="haivka.html" class="active">Haivka</a>
+      </div>
+      <div class="mobile-nav-brand">Lideri · 2026</div>
+    </div>
+  </div>
+
+  <div class="product-breadcrumb">
+    <a href="haivka.html"><span class="bc-arrow">←</span> Назад до робіт</a>
+  </div>
+
+  <div class="product-layout" id="productLayout"></div>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/lider33ghghg%20(1)%20(1).webp" alt="Lideri" class="footer-logo-img" width="180" height="56" onerror="this.style.visibility='hidden'" />
+    </div>
+    <div class="footer-nav">
+      <a href="index.html">Головна</a>
+      <a href="gallery.html">Колекція</a>
+      <a href="haivka.html">Haivka</a>
+      <a href="https://www.instagram.com/lideri.style" target="_blank" rel="noopener noreferrer" class="footer-insta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+    </div>
+    <div class="footer-copy">© 2026 Lideri. Усі права захищені.</div>
+  </footer>
+
+  <script src="haivka-works.js"></script>
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id'));
+    const p = haivkaWorks.find(w => w.id === id);
+
+    if (!p) {
+      document.getElementById('productLayout').innerHTML =
+        '<p style="padding:4rem;color:var(--text-muted);text-align:center;">Роботу не знайдено. <a href="haivka.html" style="color:var(--accent)">Повернутись до робіт</a></p>';
+    } else {
+      document.title = `${p.name} — Haivka`;
+      renderWork(p);
+    }
+
+    function renderWork(p) {
+      const validImages = (p.images || []).filter(url => url && url.trim() !== '');
+      const hasImages = validImages.length > 0;
+
+      const oldPriceHtml = p.oldPrice ? `<span class="pd-price-old">${p.oldPrice.toLocaleString('uk-UA')} ₴</span>` : '';
+      const badgeHtml = p.badge ? `<span class="pd-badge badge-${p.badge}">${p.badgeLabel}</span>` : '';
+
+      const thumbsHtml = hasImages && validImages.length > 1
+        ? validImages.map((url, i) => `
+            <button class="pd-thumb ${i === 0 ? 'active' : ''}" onclick="showImage(${i})" aria-label="Фото ${i+1}">
+              <img src="${url}" alt="" onerror="this.parentElement.style.display='none'" />
+            </button>
+          `).join('')
+        : '';
+
+      const galleryHtml = hasImages ? `
+        <div class="pd-main-img" id="pdMainImg">
+          <img id="pdMainImgEl" src="${validImages[0]}" alt="${p.name}" onerror="this.style.display='none';document.getElementById('pdEmoji').style.display='flex'" />
+          <div class="pd-emoji-fallback" id="pdEmoji" style="display:none;">${p.emoji}</div>
+          ${validImages.length > 1 ? `
+            <button class="pd-arrow pd-arrow-prev" onclick="prevImage()" aria-label="Попереднє фото">&#8592;</button>
+            <button class="pd-arrow pd-arrow-next" onclick="nextImage()" aria-label="Наступне фото">&#8594;</button>
+            <div class="pd-counter" id="pdCounter">1 / ${validImages.length}</div>
+          ` : ''}
+        </div>
+        ${thumbsHtml ? `<div class="pd-thumbs" id="pdThumbs">${thumbsHtml}</div>` : ''}
+      ` : `
+        <div class="pd-main-img">
+          <div class="pd-emoji-fallback">${p.emoji}</div>
+        </div>
+      `;
+
+      const materialsHtml = (p.materials || []).length > 0 ? `
+        <div class="pd-sizes-block">
+          <div class="pd-sizes-label">Матеріали</div>
+          <div class="pd-sizes">
+            ${p.materials.map(m => `<span class="pd-size-btn">${m}</span>`).join('')}
+          </div>
+        </div>
+        <div class="pd-divider"></div>
+      ` : '';
+
+      document.getElementById('productLayout').innerHTML = `
+        <div class="pd-gallery">${galleryHtml}</div>
+        <div class="pd-info" data-reveal>
+          <div class="pd-meta">
+            <span class="pd-category">${p.categoryLabel}</span>
+            ${badgeHtml}
+          </div>
+          <h1 class="pd-name">${p.name}</h1>
+          <div class="pd-price-row">
+            <span class="pd-price">${p.price.toLocaleString('uk-UA')} ₴</span>
+            ${oldPriceHtml}
+          </div>
+          <div class="pd-divider"></div>
+          ${materialsHtml}
+          <p class="pd-desc">${p.desc}</p>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn btn-primary pd-cta">ЗАМОВИТИ</a>
+        </div>
+      `;
+      document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+    }
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+      const validImages = (p.images || []).filter(url => url && url.trim() !== '');
+      if (!validImages.length) return;
+      currentIndex = (index + validImages.length) % validImages.length;
+      const imgEl = document.getElementById('pdMainImgEl');
+      if (imgEl) {
+        imgEl.style.opacity = '0';
+        setTimeout(() => { imgEl.src = validImages[currentIndex]; imgEl.style.opacity = '1'; }, 180);
+      }
+      const counter = document.getElementById('pdCounter');
+      if (counter) counter.textContent = `${currentIndex + 1} / ${validImages.length}`;
+      document.querySelectorAll('.pd-thumb').forEach((btn, i) => btn.classList.toggle('active', i === currentIndex));
+    }
+
+    function nextImage() { showImage(currentIndex + 1); }
+    function prevImage() { showImage(currentIndex - 1); }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
+
+    document.fonts.ready.then(() => document.documentElement.classList.remove('fonts-loading'));
+  </script>
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    burgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    document.getElementById('mobileNavClose').addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.addEventListener('click', e => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') mobileNav.classList.remove('open'); });
+  </script>
+
+</body>
+</html>

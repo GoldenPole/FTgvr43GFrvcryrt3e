@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Haivka — ручні роботи Христі Гель. Вишивка, макраме, ілюстрації та в'язання." />
+  <title>Haivka — Христя Гель</title>
+  <link rel="icon" type="image/svg+xml" href="assets/liderilogo3444.svg">
+  <link rel="preconnect" href="https://qtcvngzcbjpnosriaxga.supabase.co" crossorigin>
+  <link rel="dns-prefetch" href="https://qtcvngzcbjpnosriaxga.supabase.co">
+  <!-- LCP: hero image -->
+  <link rel="preload" as="image" href="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/haivka/IMG_9953.jpg" fetchpriority="high">
+  <!-- LCP: nav logo -->
+  <link rel="preload" as="image" href="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/lider33ghghg%20(1)%20(1).webp">
+  <link rel="preload" href="/fonts/Inter-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/CormorantGaramond-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/CormorantGaramond-Italic-VariableFont.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-VariableFont.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-Italic-VariableFont.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-VariableFont.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 95%;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter-Italic-VariableFont.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  size-adjust: 95%;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f7f5f2;
+  --surface: #ffffff;
+  --surface2: #f2efe9;
+  --surface3: #e8e4dd;
+  --accent: #a07840;
+  --accent-dim: #87632e;
+  --accent-light: rgba(160, 120, 64, 0.09);
+  --text: #1c1a18;
+  --text-muted: #8c8882;
+  --text-sub: #6b6660;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(160, 120, 64, 0.28);
+  --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-h: 108px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+[data-reveal] { opacity: 0; transform: translateY(32px); transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1); }
+[data-reveal].revealed { opacity: 1; transform: translateY(0); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  background: rgba(247, 245, 242, 0.96);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 28px rgba(0,0,0,0.06);
+  transition: none;
+}
+nav.nav-transparent {
+  background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none;
+  border-bottom-color: transparent; box-shadow: none;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.75rem; isolation: isolate; }
+.nav-logo-img {
+  height: 100px; width: auto; max-width: 320px; object-fit: contain;
+  transition: filter 0.7s cubic-bezier(0.4,0,0.2,1);
+  filter: brightness(0) invert(1);
+}
+nav:not(.nav-transparent) .nav-logo-img {
+  filter: brightness(0) sepia(1) saturate(2) hue-rotate(8deg);
+}
+.nav-links {
+  display: flex; gap: 2.5rem; list-style: none;
+  padding: 0.45rem 1.5rem; border: 1px solid transparent;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.nav-links a {
+  font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); transition: color var(--transition); font-weight: 500;
+}
+nav.nav-transparent .nav-links {
+  background: rgba(0,0,0,0.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-color: rgba(255,255,255,0.1);
+}
+nav.nav-transparent .nav-links a { color: rgba(255,255,255,0.82); text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+nav.nav-transparent .nav-links a:hover, nav.nav-transparent .nav-links a.active { color: rgba(255,255,255,1); }
+
+/* BTN */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2.2rem; font-size: 0.78rem; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 600; cursor: pointer;
+  transition: all var(--transition); border: none; font-family: 'Inter', sans-serif;
+}
+.btn-outline {
+  background: transparent; color: var(--text); border: 1px solid rgba(0,0,0,0.18);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* GALLERY HERO */
+.gallery-hero {
+  position: relative; height: 15vh; overflow: hidden;
+  background: var(--surface3); display: flex; align-items: flex-end;
+}
+.gallery-hero-bg {
+  position: absolute; top: -25%; left: 0; right: 0; bottom: -10%;
+  will-change: transform;
+}
+.gallery-hero-bg img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  filter: blur(10px) brightness(0.72) saturate(0.8);
+  transform: scale(1.06);
+}
+.gallery-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(8,8,8,0.1) 0%, rgba(8,8,8,0.55) 100%);
+}
+.gallery-hero-content {
+  position: relative; z-index: 2; padding: 0 3rem 3.5rem; width: 100%;
+}
+.gallery-hero-body { display: flex; align-items: flex-start; gap: 3rem; }
+.gallery-hero-eyebrow {
+  font-size: 0.68rem; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.8rem; font-weight: 500;
+}
+.gallery-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-weight: 600; font-style: italic;
+  color: rgba(255,255,255,0.95); letter-spacing: -0.5px; line-height: 1.1;
+}
+.gallery-hero-desc {
+  max-width: 200px; color: rgba(236,232,225,0.55);
+  font-size: 0.79rem; font-weight: 300; line-height: 1.75;
+  padding-top: 0.5rem; padding-left: 1.5rem;
+  border-left: 1px solid rgba(201,169,110,0.22);
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  width: 100%; display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border); border-bottom: 1px solid var(--border);
+  min-height: 40vw;
+}
+.skeleton-card { background: var(--surface); overflow: hidden; }
+.skeleton-card::after {
+  content: ''; display: block; aspect-ratio: 4/3;
+  background: linear-gradient(90deg, var(--surface2) 25%, var(--surface3) 50%, var(--surface2) 75%);
+  background-size: 200% 100%; animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.product-card {
+  background: var(--surface); overflow: hidden; cursor: pointer;
+  transition: background var(--transition); position: relative;
+}
+.product-card:hover { background: var(--surface2); }
+.product-card:hover .card-img-inner { transform: scale(1.04); }
+.product-card:hover .card-overlay { opacity: 1; }
+.card-img { aspect-ratio: 4/3; background: var(--surface2); overflow: hidden; position: relative; }
+.card-img-inner {
+  width: 100%; height: 100%; position: relative;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  background: var(--surface2);
+}
+.card-img-inner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.card-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  padding: 0.25rem 0.7rem; font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; z-index: 2;
+}
+.badge-new { background: var(--accent); color: #fff; }
+.badge-sale { background: #c0392b; color: #fff; }
+.card-overlay {
+  position: absolute; inset: 0;
+  background: rgba(247,245,242,0.88);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity var(--transition); z-index: 3;
+}
+.card-overlay-text {
+  border: 1px solid var(--accent); color: var(--accent);
+  font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+  padding: 0.65rem 1.6rem; background: rgba(255,255,255,0.85);
+}
+.card-body {
+  padding: 1.1rem 1.4rem; border-top: 1px solid var(--border);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+}
+.card-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+  font-weight: 600; font-style: italic;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
+}
+.card-price { font-size: 0.9rem; font-weight: 600; color: var(--accent); white-space: nowrap; flex-shrink: 0; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border); padding: 1.75rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; min-height: 96px;
+}
+.footer-logo-img {
+  height: 56px; width: auto; object-fit: contain;
+  filter: brightness(0) sepia(1) saturate(2) hue-rotate(8deg);
+}
+.footer-copy { font-size: 0.72rem; color: #333333; letter-spacing: 0.5px; }
+.footer-nav { display: flex; align-items: center; gap: 2rem; }
+.footer-nav a {
+  font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase;
+  color: #333333; transition: color var(--transition);
+  display: inline-flex; align-items: center; gap: 0.45rem;
+}
+.footer-nav a:hover { color: var(--accent); }
+.footer-insta svg { flex-shrink: 0; }
+
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  nav { padding: 0 2rem; }
+  .nav-logo-img { height: 80px; max-width: 240px; }
+  footer { padding: 1.5rem 2rem; }
+  .gallery-hero-content { padding: 0 2rem 2rem; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 1.25rem; }
+  .nav-links { gap: 1.5rem; padding: 0.4rem 1rem; }
+  .gallery-hero { height: 17vh; align-items: center; }
+  .gallery-hero-content { padding: calc(var(--nav-h) + 0.5rem) 1.5rem 2rem; }
+  .gallery-hero-body { flex-direction: column; gap: 1rem; }
+  .gallery-hero-desc { display: none; }
+  .product-grid { grid-template-columns: 1fr; }
+  .card-name { font-size: 1rem; }
+  footer { flex-direction: column; text-align: center; padding: 2rem 1.5rem; gap: 1.2rem; }
+  .footer-nav { gap: 1.25rem; flex-wrap: wrap; justify-content: center; }
+}
+
+/* BURGER & MOBILE NAV */
+.burger {
+  display: none; flex-direction: column; justify-content: center;
+  align-items: center; gap: 5px; width: 36px; height: 36px;
+  background: none; border: none; cursor: pointer; padding: 4px;
+  color: var(--text); flex-shrink: 0;
+}
+.burger span {
+  display: block; width: 22px; height: 1.5px;
+  background: currentColor; border-radius: 1px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
+.mobile-nav-overlay {
+  position: fixed; inset: 0;
+  background: rgba(28,26,24,0.52);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  z-index: 150; opacity: 0; visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+.mobile-nav-overlay.open { opacity: 1; visibility: visible; }
+.mobile-nav-panel {
+  position: absolute; top: 0; right: 0; bottom: 0;
+  width: min(300px, 85vw); background: var(--surface);
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 2rem;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-nav-overlay.open .mobile-nav-panel { transform: translateX(0); }
+.mobile-nav-close {
+  position: absolute; top: 1.6rem; right: 1.8rem;
+  background: none; border: none;
+  font-size: 1.1rem; cursor: pointer; color: var(--text-muted);
+  padding: 0.4rem; transition: color 0.2s; line-height: 1;
+}
+.mobile-nav-close:hover { color: var(--text); }
+.mobile-nav-links { display: flex; flex-direction: column; margin-bottom: 5rem; }
+.mobile-nav-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem; font-weight: 600; font-style: italic;
+  color: var(--text); padding: 2rem 0;
+  letter-spacing: -0.5px; transition: color 0.2s; line-height: 1.1;
+}
+.mobile-nav-links a:hover, .mobile-nav-links a.active { color: var(--accent); }
+.mobile-nav-brand {
+  position: absolute; bottom: 2rem; left: 2rem;
+  font-size: 0.62rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .burger { display: flex; }
+}
+  </style>
+  <script>document.documentElement.classList.add('fonts-loading');</script>
+</head>
+<body>
+
+  <nav class="nav-transparent" id="main-nav">
+    <a href="index.html" class="nav-logo">
+      <img src="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/lider33ghghg%20(1)%20(1).webp" alt="Lideri" class="nav-logo-img" width="320" height="100" onerror="this.style.visibility='hidden'" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Головна</a></li>
+      <li><a href="gallery.html">Колекція</a></li>
+      <li><a href="haivka.html" class="active">Haivka</a></li>
+    </ul>
+    <button class="burger" id="burgerBtn" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-nav-overlay" id="mobileNav">
+    <div class="mobile-nav-panel">
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Закрити">&#x2715;</button>
+      <div class="mobile-nav-links">
+        <a href="index.html">Головна</a>
+        <a href="gallery.html">Колекція</a>
+        <a href="haivka.html" class="active">Haivka</a>
+      </div>
+      <div class="mobile-nav-brand">Lideri · 2026</div>
+    </div>
+  </div>
+
+  <main>
+    <div class="gallery-hero">
+      <div class="gallery-hero-bg">
+        <img
+          src="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/haivka/IMG_9953.jpg"
+          alt="Haivka"
+          fetchpriority="high"
+          loading="eager"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="gallery-hero-overlay"></div>
+      <div class="gallery-hero-content">
+        <div class="gallery-hero-body" data-reveal>
+          <h1 class="gallery-hero-title">Христя Гель — ручні роботи</h1>
+          <p class="gallery-hero-desc">Вишивка, макраме, ілюстрації — кожна річ зроблена вручну з увагою до деталей.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/lider33ghghg%20(1)%20(1).webp" alt="Lideri" class="footer-logo-img" width="180" height="56" onerror="this.style.visibility='hidden'" />
+    </div>
+    <div class="footer-nav">
+      <a href="index.html">Головна</a>
+      <a href="gallery.html">Колекція</a>
+      <a href="haivka.html">Haivka</a>
+      <a href="https://www.instagram.com/lideri.style" target="_blank" rel="noopener noreferrer" class="footer-insta">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+    </div>
+    <div class="footer-copy">© 2026 Lideri. Усі права захищені.</div>
+  </footer>
+
+  <script src="haivka-works.js"></script>
+  <script>
+    const nav = document.getElementById('main-nav');
+    const NAV_FADE_START = 30, NAV_FADE_END = 160;
+    const heroBg = document.querySelector('.gallery-hero-bg');
+    let _scrollY = window.scrollY, _rafPending = false;
+    let _parTarget = 0, _parCurrent = 0, _parRunning = false;
+
+    function _updateNav(y) {
+      if (y < NAV_FADE_START) {
+        nav.classList.add('nav-transparent');
+        nav.style.background = nav.style.boxShadow = nav.style.borderBottomColor = '';
+      } else {
+        nav.classList.remove('nav-transparent');
+        const p = Math.min(1, (y - NAV_FADE_START) / (NAV_FADE_END - NAV_FADE_START));
+        nav.style.background        = `rgba(247,245,242,${(p * 0.96).toFixed(3)})`;
+        nav.style.boxShadow         = `0 4px 28px rgba(0,0,0,${(p * 0.06).toFixed(3)})`;
+        nav.style.borderBottomColor = `rgba(0,0,0,${(p * 0.08).toFixed(3)})`;
+      }
+    }
+
+    function _parLoop() {
+      _parCurrent += (_parTarget - _parCurrent) * 0.07;
+      if (heroBg) heroBg.style.transform = `translateY(${_parCurrent.toFixed(2)}px)`;
+      if (Math.abs(_parTarget - _parCurrent) > 0.05) requestAnimationFrame(_parLoop);
+      else _parRunning = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      _scrollY = window.scrollY;
+      if (!_rafPending) {
+        _rafPending = true;
+        requestAnimationFrame(() => {
+          _updateNav(_scrollY);
+          _parTarget = _scrollY * 0.2;
+          if (!_parRunning) { _parRunning = true; requestAnimationFrame(_parLoop); }
+          _rafPending = false;
+        });
+      }
+    }, { passive: true });
+
+    _updateNav(_scrollY);
+
+    // Render grid
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = haivkaWorks.map(p => {
+      const first = (p.images || []).find(url => url && url.trim() !== '');
+      const imgHtml = first
+        ? `<img src="${first}" alt="${p.name}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none'" />`
+        : '';
+      const badgeHtml = p.badge ? `<span class="card-badge badge-${p.badge}">${p.badgeLabel}</span>` : '';
+      return `
+        <div class="product-card" onclick="window.location.href='haivka-work.html?id=${p.id}'">
+          <div class="card-img">
+            <div class="card-img-inner">${imgHtml}</div>
+            ${badgeHtml}
+            <div class="card-overlay"><span class="card-overlay-text">Детальніше</span></div>
+          </div>
+          <div class="card-body">
+            <span class="card-name">${p.name}</span>
+            <span class="card-price">${p.price.toLocaleString('uk-UA')} ₴</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+    document.fonts.ready.then(() => document.documentElement.classList.remove('fonts-loading'));
+  </script>
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    burgerBtn.addEventListener('click', () => mobileNav.classList.add('open'));
+    document.getElementById('mobileNavClose').addEventListener('click', () => mobileNav.classList.remove('open'));
+    mobileNav.addEventListener('click', e => { if (e.target === mobileNav) mobileNav.classList.remove('open'); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') mobileNav.classList.remove('open'); });
+  </script>
+
+</body>
+</html>
