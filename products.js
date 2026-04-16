@@ -334,7 +334,7 @@ const products = [
       "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/korich01.webp",
       "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/korich02.webp",
       "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/korich03.webp",
-      "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/korich04.webp",
+      
       "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/korich05.webp",
       "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/photo/korich06.webp",
     ],
