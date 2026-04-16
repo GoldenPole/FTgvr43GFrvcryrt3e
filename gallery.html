@@ -1957,7 +1957,7 @@ nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
         const badgeHtml = p.badge
           ? `<span class="card-badge badge-${p.badge}">${p.badgeLabel}</span>` : '';
         const oldPriceHtml = p.oldPrice
-          ? `<span class="card-price-old">${p.oldPrice.toLocaleString('uk-UA')} ₴</span>` : '';
+          ? `<span class="card-price-old">${p.oldPrice.toLocaleString('uk-UA')} ${PRODUCTS_CURRENCY}</span>` : '';
 
         return `
           <div class="product-card" onclick="window.location.href='product.html?id=${p.id}'">
@@ -1969,7 +1969,7 @@ nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
             <div class="card-body">
               <span class="card-name">${p.name}</span>
               <div>
-                <span class="card-price">${p.price.toLocaleString('uk-UA')} ₴</span>
+                <span class="card-price">${p.price.toLocaleString('uk-UA')} ${PRODUCTS_CURRENCY}</span>
                 ${oldPriceHtml}
               </div>
             </div>

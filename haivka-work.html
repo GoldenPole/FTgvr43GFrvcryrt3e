@@ -367,7 +367,7 @@ footer {
       const validImages = (p.images || []).filter(url => url && url.trim() !== '');
       const hasImages = validImages.length > 0;
 
-      const oldPriceHtml = p.oldPrice ? `<span class="pd-price-old">${p.oldPrice.toLocaleString('uk-UA')} ₴</span>` : '';
+      const oldPriceHtml = p.oldPrice ? `<span class="pd-price-old">${p.oldPrice.toLocaleString('uk-UA')} ${HAIVKA_CURRENCY}</span>` : '';
       const badgeHtml = p.badge ? `<span class="pd-badge badge-${p.badge}">${p.badgeLabel}</span>` : '';
 
       const thumbsHtml = hasImages && validImages.length > 1
@@ -414,7 +414,7 @@ footer {
           </div>
           <h1 class="pd-name">${p.name}</h1>
           <div class="pd-price-row">
-            <span class="pd-price">${p.price.toLocaleString('uk-UA')} ₴</span>
+            <span class="pd-price">${p.price.toLocaleString('uk-UA')} ${HAIVKA_CURRENCY}</span>
             ${oldPriceHtml}
           </div>
           <div class="pd-divider"></div>

@@ -1851,7 +1851,7 @@ nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
         `;
       }
       const oldPriceHtml = p.oldPrice
-        ? `<span class="pd-price-old">${p.oldPrice.toLocaleString('uk-UA')} ₴</span>` : '';
+        ? `<span class="pd-price-old">${p.oldPrice.toLocaleString('uk-UA')} ${PRODUCTS_CURRENCY}</span>` : '';
       const badgeHtml = p.badge
         ? `<span class="pd-badge badge-${p.badge}">${p.badgeLabel}</span>` : '';
 
@@ -1891,7 +1891,7 @@ nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
           </div>
           <h1 class="pd-name">${p.name}</h1>
           <div class="pd-price-row">
-            <span class="pd-price">${p.price.toLocaleString('uk-UA')} ₴</span>
+            <span class="pd-price">${p.price.toLocaleString('uk-UA')} ${PRODUCTS_CURRENCY}</span>
             ${oldPriceHtml}
           </div>
           <div class="pd-divider"></div>
