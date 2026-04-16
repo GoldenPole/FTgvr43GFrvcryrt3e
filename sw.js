@@ -1,5 +1,5 @@
-const CACHE_NAME = 'lideri-v11';
-const IMAGE_CACHE = 'lideri-images-v3';
+const CACHE_NAME = 'lideri-v12';
+const IMAGE_CACHE = 'lideri-images-v4';
 const IMAGE_MAX  = 80; // максимальна кількість фото в кеші
 
 const STATIC_ASSETS = [
