@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lideri-v13';
+const CACHE_NAME = 'lideri-v14';
 const IMAGE_CACHE = 'lideri-images-v5';
 const IMAGE_MAX  = 80; // максимальна кількість фото в кеші
 
@@ -74,8 +74,9 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // HTML-сторінки: network-first (завжди свіжі), fallback на кеш
-  if (url.origin === self.location.origin && url.pathname.endsWith('.html')) {
+  // HTML і JS файли: network-first (завжди свіжі), fallback на кеш
+  if (url.origin === self.location.origin &&
+      (url.pathname.endsWith('.html') || url.pathname.endsWith('.js'))) {
     event.respondWith(
       fetch(request)
         .then(response => {
@@ -89,7 +90,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Решта статичних файлів (JS, шрифти, svg): cache-first
+  // Шрифти, svg, зображення: cache-first (не змінюються)
   if (url.origin === self.location.origin) {
     event.respondWith(
       caches.match(request).then(cached => cached || fetch(request))
