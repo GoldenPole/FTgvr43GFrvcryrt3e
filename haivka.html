@@ -219,6 +219,9 @@ nav.nav-transparent .nav-links a:hover, nav.nav-transparent .nav-links a.active 
 }
 .card-body {
   padding: 1.1rem 1.4rem; border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 0.45rem;
+}
+.card-body-row {
   display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
 }
 .card-name {
@@ -227,6 +230,15 @@ nav.nav-transparent .nav-links a:hover, nav.nav-transparent .nav-links a.active 
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
 }
 .card-price { font-size: 0.9rem; font-weight: 600; color: var(--accent); white-space: nowrap; flex-shrink: 0; }
+.card-stock {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.card-stock::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.card-stock.in-stock { color: #3a7d44; }
+.card-stock.in-stock::before { background: #3a7d44; }
+.card-stock.out-of-stock { color: #b0383e; }
+.card-stock.out-of-stock::before { background: #b0383e; }
 
 /* FOOTER */
 footer {
@@ -454,6 +466,10 @@ nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
         ? `<img src="${first}" alt="${p.name}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none'" />`
         : '';
       const badgeHtml = p.badge ? `<span class="card-badge badge-${p.badge}">${p.badgeLabel}</span>` : '';
+      const stockHtml = p.stock > 0
+        ? `<span class="card-stock in-stock">В наявності · ${p.stock} шт.</span>`
+        : `<span class="card-stock out-of-stock">Немає в наявності</span>`;
+      const priceHtml = p.price > 0 ? `${p.price.toLocaleString('uk-UA')} ${HAIVKA_CURRENCY}` : '—';
       return `
         <div class="product-card" onclick="window.location.href='haivka-work.html?id=${p.id}'">
           <div class="card-img">
@@ -462,8 +478,11 @@ nav.nav-transparent .burger { color: rgba(255,255,255,0.85); }
             <div class="card-overlay"><span class="card-overlay-text">Детальніше</span></div>
           </div>
           <div class="card-body">
-            <span class="card-name">${p.name}</span>
-            <span class="card-price">${p.price.toLocaleString('uk-UA')} ${HAIVKA_CURRENCY}</span>
+            <div class="card-body-row">
+              <span class="card-name">${p.name}</span>
+              <span class="card-price">${priceHtml}</span>
+            </div>
+            ${stockHtml}
           </div>
         </div>
       `;
