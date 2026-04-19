@@ -73,7 +73,7 @@ const haivkaWorks = [
       "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/haivka/IMG_4095.webp",
       "https://qtcvngzcbjpnosriaxga.supabase.co/storage/v1/object/public/haivka/IMG_4116.webp"
     ],
-    price: 420,
+    price: 450,
     stock: 1,
     badge: "new",
     badgeLabel: "Нове",
